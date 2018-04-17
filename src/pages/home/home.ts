@@ -94,7 +94,7 @@ getRestaurants(latLng)
     let request = {
         location : latLng,
         radius : 8047 ,
-        types: ["restaurant"]
+        types: ["hotel"]
     };
     return new Promise((resolve,reject)=>{
         service.nearbySearch(request,function(results,status){
