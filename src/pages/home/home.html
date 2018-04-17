@@ -1,14 +1,17 @@
 <ion-header>
-  <ion-navbar>
+<ion-navbar>
     <ion-title>
-      Ionic Blank
+    Nearby Me Restaurants
     </ion-title>
-  </ion-navbar>
+    <ion-buttons end>
+    <button ion-button (click)="showNearbyResto()"><ion-icon name="list"></ion-icon>Restaurants</button>
+    </ion-buttons>
+
+</ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+<div #map id="map"></div>
+
 </ion-content>
