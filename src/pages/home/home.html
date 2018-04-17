@@ -1,10 +1,10 @@
 <ion-header>
 <ion-navbar>
     <ion-title>
-    Nearby Me Restaurants
+    Find Restaurants
     </ion-title>
     <ion-buttons end>
-    <button ion-button (click)="showNearbyResto()"><ion-icon name="list"></ion-icon>Restaurants</button>
+    <button ion-button (click)="showNearbyResto()"><ion-icon name="list"></ion-icon></button>
     </ion-buttons>
 
 </ion-navbar>
@@ -13,5 +13,13 @@
 <ion-content padding>
 
 <div #map id="map"></div>
+
+<div style="width : 100% ;height: 60%">
+    <ion-list>
+    <ion-item *ngFor="let place of places">
+        <p></p>
+    </ion-item>
+    </ion-list>
+</div>
 
 </ion-content>
