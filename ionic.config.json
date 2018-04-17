@@ -1,0 +1,8 @@
+{
+  "name": "Resturant",
+  "app_id": "7d90fcf2",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
