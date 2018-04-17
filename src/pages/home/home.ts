@@ -1,6 +1,7 @@
 import { Component, ViewChild , ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation';
+import { HotelsPage } from '../../pages/hotels/hotels';
 
 declare var google;
 @Component({
@@ -120,5 +121,9 @@ createMarker(place)
     position: place.geometry.location
     });
 }
+
+//show List of Hotel
+showHotelsPage(){
+this.navCtrl.push(HotelsPage,{'places' : this.places});}
 
 }
