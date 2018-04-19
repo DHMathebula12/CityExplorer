@@ -82,6 +82,9 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.2.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
+    <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+        <string>need location access to find things nearby</string>
+    </edit-config>
     <engine name="ios" spec="~4.5.4" />
     <engine name="android" spec="~7.0.0" />
 </widget>

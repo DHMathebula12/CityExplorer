@@ -14,5 +14,9 @@
 
 <div #map id="map"></div>
 
-
-</ion-content>
+<div style="width : 100% ;height: 40%">
+  <ion-slides loop="true" style="background-color: white">
+    <ion-slide *ngFor="let image of [1,2,3,4]">
+      <img data-src="./assets/imgs/slide/slide{{image}}.png">
+    </ion-slide>
+  </ion-slides> </div>
