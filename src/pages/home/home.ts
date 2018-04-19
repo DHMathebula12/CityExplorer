@@ -1,4 +1,4 @@
-import { Component, ViewChild , ElementRef } from '@angular/core';
+import { Component, ViewChild , ElementRef, ViewEncapsulation } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation';
 import { HotelsPage } from '../../pages/hotels/hotels';
@@ -6,7 +6,26 @@ import { HotelsPage } from '../../pages/hotels/hotels';
 declare var google;
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  encapsulation: ViewEncapsulation.None,
+  styles: [
+    `
+      ion-tabs {
+        margin-bottom: 0px;
+      }
+    `,
+    `
+      ion-tabs,
+      ion-tabs .tabbar {
+        position: relative;
+        top: auto;
+        height: auto;
+        visibility: visible;
+        opacity: 1;
+      }
+    `
+  ]
+
 })
 export class HomePage {
 
