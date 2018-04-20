@@ -25,6 +25,7 @@ export class HotelsPage {
      this.hotels = this.navParams.get('places');
     console.log('ionViewDidLoad HotelsPage');
 
+
   }
 
 }

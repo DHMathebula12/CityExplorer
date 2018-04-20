@@ -12,13 +12,17 @@
 
 </ion-header>
 
-
-<ion-content padding>
-  <ion-content padding>
+  <ion-content nopadding>
       <ion-list>
       <ion-item *ngFor="let hotel of hotels; let i=index">
+        <ion-avatar item-left>
+                <ion-icon color="danger"name="pin"></ion-icon>
+            </ion-avatar>
           <p>{{hotel.name}}</p>
+          <p>
+            <span>Rating <ion-icon color="danger"name="star"></ion-icon>{{hotel.rating}}</span>
+          <p>
+          <p>{{hotel.vicinity}}</p>
       </ion-item>
       </ion-list>
   </ion-content>
-</ion-content>
