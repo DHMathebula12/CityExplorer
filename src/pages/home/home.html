@@ -20,8 +20,8 @@
     <ion-toolbar>
       <!-- Icons on top of text -->
       <ion-tabs tabs-only selectedIndex="2" color="light">
-        <ion-tab tabTitle="Hotel" tabIcon="pin" [root]="root" (ionSelect)="showHotelsPage()"></ion-tab>
-        <ion-tab tabTitle="Food" tabIcon="restaurant" [root]="root"></ion-tab>
+        <ion-tab tabTitle="Hotel" tabIcon="pin" [root]="root" (ionSelect)="showHotelsPage('')"></ion-tab>
+        <ion-tab tabTitle="Food" tabIcon="restaurant" [root]="root" (ionSelect)="showHotelsPage('restaurant')"></ion-tab>
         <ion-tab tabTitle="Fun" tabIcon="beer" [root]="root"></ion-tab>
         <ion-tab tabTitle="Shop" tabIcon="cart" [root]="root"></ion-tab>
         <ion-tab tabTitle="Airport" tabIcon="plane" [root]="root"></ion-tab>

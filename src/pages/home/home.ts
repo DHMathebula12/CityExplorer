@@ -35,19 +35,24 @@ export class HomePage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   places : Array<any> ;
+  type: string = '';
 
 //Inject Geolocation via constructor
   constructor(public navCtrl: NavController, private geolocation : Geolocation) {
+
   }
 
 //Call the getUserPosition when the view did enter
 ionViewDidEnter()
-{this.getUserPosition();}
+{
+  this.places = [];
+  this.getUserPosition(this.type);
+}
 
 //Create map
-addMap(lat,long){
+addMap(lat,long,selectedType){
 
-    let latLng = new google.maps.LatLng(lat, long);
+     let latLng = new google.maps.LatLng(lat, long);
 
     let mapOptions = {
     center: latLng,
@@ -56,8 +61,8 @@ addMap(lat,long){
     }
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
-    this.getRestaurants(latLng).then((results : Array<any>)=>{
+console.log("selectedType: Add Map" + selectedType);
+    this.getLocation(latLng,selectedType).then((results : Array<any>)=>{
         this.places = results;
         for(let i = 0 ;i < results.length ; i++)
         {
@@ -90,16 +95,18 @@ addMarker(){
 }
 
 //getUserPosition method - display the map based on the current user position
-getUserPosition(){
+getUserPosition(selectedType){
     this.options = {
     enableHighAccuracy : false
     };
+    this.type = selectedType;
+    console.log("Type - User Position:" + this.type);
     this.geolocation.getCurrentPosition(this.options).then((pos : Geoposition) => {
 
         this.currentPos = pos;
 
         console.log(pos);
-        this.addMap(pos.coords.latitude,pos.coords.longitude);
+        this.addMap(pos.coords.latitude,pos.coords.longitude,selectedType);
 
     },(err : PositionError)=>{
         console.log("error : " + err.message);
@@ -107,14 +114,15 @@ getUserPosition(){
     })
 }
 
-//Get Restaurants
-getRestaurants(latLng)
+//Get Location
+getLocation(latLng,type)
 {
+  console.log("Selected Type:" + type);
     var service = new google.maps.places.PlacesService(this.map);
     let request = {
         location : latLng,
         radius : 8047 ,
-        types: ["hotel"]
+        types: [type]
     };
     return new Promise((resolve,reject)=>{
         service.nearbySearch(request,function(results,status){
@@ -142,7 +150,12 @@ createMarker(place)
 }
 
 //show List of Hotel
-showHotelsPage(){
-this.navCtrl.push(HotelsPage,{'places' : this.places});}
+showHotelsPage(selectType){
+console.log("Type:" + selectType);
+//Get Location
+ this.getUserPosition(selectType);
+
+this.navCtrl.push(HotelsPage,{'places' : this.places});
+}
 
 }

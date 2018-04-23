@@ -18,14 +18,20 @@ export class HotelsPage {
    hotels : Array<any> ;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  this.hotels = this.navParams.get('places');
+
   }
 
   ionViewDidLoad() {
+    this.hotels = [];
      this.hotels = this.navParams.get('places');
     console.log('ionViewDidLoad HotelsPage');
 
 
+  }
+
+  ionViewDidLeave(){
+    this.hotels = [];
+      console.log('ionViewDidLeave HotelsPage');
   }
 
 }
