@@ -4,7 +4,7 @@
     City Explorer
     </ion-title>
     <ion-buttons end>
-    <button ion-button (click)="showHotelsPage()"><ion-icon name="list"></ion-icon></button>
+    <button ion-button (click)="showPage()"><ion-icon name="list"></ion-icon></button>
     </ion-buttons>
 
 </ion-navbar>
@@ -20,12 +20,12 @@
     <ion-toolbar>
       <!-- Icons on top of text -->
       <ion-tabs tabs-only selectedIndex="2" color="light">
-        <ion-tab tabTitle="Hotel" tabIcon="pin" [root]="root" (ionSelect)="showHotelsPage('')"></ion-tab>
-        <ion-tab tabTitle="Food" tabIcon="restaurant" [root]="root" (ionSelect)="showHotelsPage('restaurant')"></ion-tab>
-        <ion-tab tabTitle="Fun" tabIcon="beer" [root]="root"></ion-tab>
-        <ion-tab tabTitle="Shop" tabIcon="cart" [root]="root"></ion-tab>
-        <ion-tab tabTitle="Airport" tabIcon="plane" [root]="root"></ion-tab>
-        <ion-tab tabTitle="Train" tabIcon="train" [root]="root"></ion-tab>
+        <ion-tab tabTitle="Hotel" tabIcon="pin" [root]="root" (ionSelect)="selectPage('hotel')"></ion-tab>
+        <ion-tab tabTitle="Food" tabIcon="restaurant" [root]="root" (ionSelect)="selectPage('restaurant')"></ion-tab>
+        <ion-tab tabTitle="Fun" tabIcon="beer" [root]="root" (ionSelect)="selectPage('night_club')"></ion-tab>
+        <ion-tab tabTitle="Shop" tabIcon="cart" [root]="root"(ionSelect)="selectPage('supermarket')"></ion-tab>
+        <ion-tab tabTitle="Airport" tabIcon="plane" [root]="root" (ionSelect)="selectPage('airport')"></ion-tab>
+        <ion-tab tabTitle="Train" tabIcon="train" [root]="root" (ionSelect)="selectPage('train_station')"></ion-tab>
       </ion-tabs>
     </ion-toolbar>
   </ion-footer>

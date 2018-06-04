@@ -16,21 +16,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class HotelsPage {
 
    hotels : Array<any> ;
+   type: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
 
   ionViewDidLoad() {
-    this.hotels = [];
      this.hotels = this.navParams.get('places');
+     this.type = this.navParams.get('currentType');
     console.log('ionViewDidLoad HotelsPage');
 
 
   }
 
   ionViewDidLeave(){
-    this.hotels = [];
       console.log('ionViewDidLeave HotelsPage');
   }
 

@@ -45,10 +45,16 @@ export class HomePage {
 //Call the getUserPosition when the view did enter
 ionViewDidEnter()
 {
-  this.places = [];
+  console.log("Entering : " + this.type)
   this.getUserPosition(this.type);
 }
 
+ionViewDidLeave()
+{
+//  this.places.length = 0;
+  console.log("Leaving : " + this.type)
+  this.getUserPosition(this.type);
+}
 //Create map
 addMap(lat,long,selectedType){
 
@@ -61,14 +67,15 @@ addMap(lat,long,selectedType){
     }
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-console.log("selectedType: Add Map" + selectedType);
+    this.type = selectedType;
+console.log("selectedType: Add Map:" + this.type);
     this.getLocation(latLng,selectedType).then((results : Array<any>)=>{
         this.places = results;
         for(let i = 0 ;i < results.length ; i++)
         {
             this.createMarker(results[i]);
         }
-    },(status)=>console.log(status));
+    },(status)=>console.log("Status " + status));
 
     this.addMarker();
 
@@ -97,7 +104,7 @@ addMarker(){
 //getUserPosition method - display the map based on the current user position
 getUserPosition(selectedType){
     this.options = {
-    enableHighAccuracy : false
+    enableHighAccuracy : true
     };
     this.type = selectedType;
     console.log("Type - User Position:" + this.type);
@@ -150,12 +157,28 @@ createMarker(place)
 }
 
 //show List of Hotel
-showHotelsPage(selectType){
-console.log("Type:" + selectType);
-//Get Location
- this.getUserPosition(selectType);
+showHotelsPage(){
 
-this.navCtrl.push(HotelsPage,{'places' : this.places});
+this.selectPage(this.type).then(()=>{
+  console.log("Called after opening page.")
+
+console.log("Called after opening page.");},
+(error) => {
+  console.log("ERROR: ",error);
+});
+}
+
+selectPage(selectType)
+{
+  //Get Location
+console.log("Show Type:" + selectType);
+this.getUserPosition(selectType);
+  return selectType.toPromise();
+}
+
+showPage()
+{
+  this.navCtrl.push(HotelsPage,{'places' : this.places,'currentType' : this.type});
 }
 
 }
