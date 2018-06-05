@@ -156,25 +156,15 @@ createMarker(place)
     });
 }
 
-//show List of Hotel
-showHotelsPage(){
 
-this.selectPage(this.type).then(()=>{
-  console.log("Called after opening page.")
-
-console.log("Called after opening page.");},
-(error) => {
-  console.log("ERROR: ",error);
-});
-}
-
+//Select Type to show. - //  return new Promise((resolve,reject)=> {console.log("Done");});
 selectPage(selectType)
 {
   //Get Location
 console.log("Show Type:" + selectType);
 this.getUserPosition(selectType);
-  return selectType.toPromise();
 }
+
 
 showPage()
 {
